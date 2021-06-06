@@ -36,6 +36,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import { Auth } from '@/firebase'
 
 export default {
@@ -52,13 +53,18 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['setAlert']),
     validate () {
       return this.$refs.form.validate()
     },
     async login () {
       if (this.validate()) {
-        await Auth.signInWithEmailAndPassword(this.email, this.password)
-        this.$router.push({ name: 'Products' })
+        try {
+          await Auth.signInWithEmailAndPassword(this.email, this.password)
+          this.$router.push({ name: 'Products' })
+        } catch (error) {
+          this.setAlert({ message: 'Error al hacer autenticación', type: 'error' })
+        }
       }
     }
   }
