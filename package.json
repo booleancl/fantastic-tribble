@@ -11,7 +11,7 @@
     "pre-push": "npm-run-all frontend-test:unit backend-test",
     "husky": "husky",
     "heroku": "heroku"
-  },
+  }, 
   "keywords": [],
   "author": "",
   "license": "ISC",
