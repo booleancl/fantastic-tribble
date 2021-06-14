@@ -12,7 +12,9 @@
     "jest": "jest",
     "test": "jest --runInBand --coverage",
     "lint": "eslint .",
-    "eslint": "eslint"
+    "eslint": "eslint",
+    "db:migrate": "npm run sequelize db:migrate",
+    "heroku-postbuild": "npm run db:migrate -- --env=production"
   },
   "keywords": [],
   "author": "",
